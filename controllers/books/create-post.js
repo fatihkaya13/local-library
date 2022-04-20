@@ -1,9 +1,9 @@
-const Book = require("../../models/Book");
-const {
-  createClickhouseClient,
-} = require("../../loaders/clickhouse.js");
+// const Book = require("../../models/Book");
+const { createClickhouseClient } = require("../../loaders/clickhouse.js");
 
 module.exports = function (req, res, next) {
+
+  /*
   const book = new Book({
     title: req.body.title,
     author: req.body.author,
@@ -11,25 +11,30 @@ module.exports = function (req, res, next) {
     isbn: req.body.isbn,
     genre: req.body.genre,
   });
-
-
+*/
+  // create instance of clickhouse
   const ch = createClickhouseClient();
+  const { title, author, summary, isbn, genre } = req.body;
 
-  // test connection and insert to another db
+  // execute the following query
   ch.query(
-    `INSERT INTO 
-      VALUES ('customer6', '2021-06-10', 'add_to_cart', 'US', 66666 )`,
-    (err, data) => {
-      if (err) {
-        console.log(err);
-        return next(err);
-      } else console.log("values are inserted");
+    `INSERT INTO locallibrary.book
+    VALUES (generateUUIDv4(), '${title}', '${author}', '${summary}', '${isbn}', '${genre}')`,
+    (err, result) => {
+      if (err) return next(err);
+      console.log(result);
     }
   );
 
+  res.redirect("/books");
+
+  // '/books/'+id
+
+  /*
   book.save(function (err) {
     if (err) return next(err);
 
     res.redirect(book.url);
   });
+  */
 };
