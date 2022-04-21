@@ -6,7 +6,7 @@ module.exports = function (req, res, next) {
 
   // create instance of click house 
   const ch = createClickhouseClient();
-  const query = `select b.title, a.id as _id, a.first_name, a.family_name, a.date_of_birth, a.date_of_death
+  const query = `select b.id as book_id, b.title, a.id as _id, a.first_name, a.family_name, a.date_of_birth, a.date_of_death
                   from locallibrary.book as b
                   join locallibrary.author as a
                   on locallibrary.author.id = locallibrary.book.author_id
@@ -18,8 +18,10 @@ module.exports = function (req, res, next) {
     let bookQueryArrObj = queryResponse.data;
 
     bookQueryArrObj = queryResponse.data.map(
-      ([title, _id, first_name, family_name, date_of_birth, date_of_death]) => {
+      ([book_id, title, _id, first_name, family_name, date_of_birth, date_of_death]) => {
         return {
+          book_id,
+          url: '/books/'+book_id,
           title,
           author: {
             _id,
@@ -31,7 +33,7 @@ module.exports = function (req, res, next) {
         };
       }
     );
-    console.log(bookQueryArrObj);
+    //console.log(bookQueryArrObj);
 
     res.render("book_list", { title: "Book List", book_list: bookQueryArrObj });
   });

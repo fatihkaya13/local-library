@@ -13,6 +13,7 @@ module.exports = function (req, res, next) {
 
   let results = { authors: [], genres: [] };
 
+  // genre query may be empyt with parallel execution TODOS::
   parallel(
     ch
       .querying(genresQuery, (err, result) => {
@@ -49,7 +50,7 @@ module.exports = function (req, res, next) {
         );
         results.authors = authorQueryArrObj;
 
-        console.log(results);
+        // console.log(results);
 
         res.render("book_form", {
           title: "Create Book",

@@ -15,14 +15,13 @@ module.exports = function (req, res, next) {
   // create instance of clickhouse
   const ch = createClickhouseClient();
   const { title, author, summary, isbn, genre } = req.body;
-
+  console.log(req.body);
   // execute the following query
   ch.query(
     `INSERT INTO locallibrary.book
     VALUES (generateUUIDv4(), '${title}', '${author}', '${summary}', '${isbn}', '${genre}')`,
     (err, result) => {
       if (err) return next(err);
-      console.log(result);
     }
   );
 
