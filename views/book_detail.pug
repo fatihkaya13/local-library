@@ -4,7 +4,7 @@ block content
   h1 Title: #{book.title}
   
   p #[strong Author:] 
-    a(href=book.author.url) #{book.author.name}
+    a(href=book.author.url) #{book.author.first_name} #{book.author.family_name}
   p #[strong Summary:] #{book.summary}
   p #[strong ISBN:] #{book.isbn}
   p #[strong Genre:] 
@@ -35,6 +35,6 @@ block content
       
   hr
   p
-    a(href=book.url+'/delete') Delete Book
-  p
-    a(href=book.url+'/update') Update Book
+    a(href=book._id+"/delete") Delete Book
+  p 
+    a(href=book._id+"/update") Update Book
