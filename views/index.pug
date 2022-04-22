@@ -14,8 +14,66 @@ block content
     p The library has the following record counts:
 
     ul
+      
       li #[strong Books:] !{data.book_count}
       li #[strong Copies:] !{data.book_instance_count}
       li #[strong Copies available:] !{data.book_instance_available_count}
       li #[strong Authors:] !{data.author_count}
       li #[strong Genres:] !{data.genre_count}
+
+  div(class="content-wrapper")
+    div(class="container-fluid")
+      div(class="row")
+
+        div(class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4")
+          div(class="inforide")
+            div(class="row")
+              div(class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty bg-info")
+                h4 Books 
+                h2(class="text-white") !{data.book_count}
+                div(class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4")
+
+        div(class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4")
+          div(class="inforide")
+            div(class="row")
+              div(class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty bg-info")
+                h4 Copies 
+                h2(class="text-white") !{data.book_instance_count}
+                div(class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4")
+
+        div(class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4")
+          div(class="inforide")
+            div(class="row")
+              div(class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty bg-info")
+                h4 Copies available
+                h2(class="text-white") !{data.book_instance_available_count}
+                div(class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4")
+
+        div(class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4")
+          div(class="inforide")
+            div(class="row")
+              div(class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty bg-info")
+                h4 Authors
+                h2(class="text-white") !{data.author_count}
+                div(class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4")
+
+        div(class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4")
+          div(class="inforide")
+            div(class="row")
+              div(class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty bg-info")
+                h4 Genres 
+                h2(class="text-white") !{data.genre_count}
+                div(class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4")
+
+        div(class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4")
+          div(class="inforide")
+            div(class="row")
+              div(class="col-sm-9 col-sm-4 col-sm-2 col-2 fontsty bg-info")
+                h4 Latest Additions 
+                p(class="text-white") Book 1
+                p(class="text-white") Book 2
+                p(class="text-white") Book 3
+
+      
+
+
